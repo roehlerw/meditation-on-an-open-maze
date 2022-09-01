@@ -56,7 +56,7 @@ function GameSquare(props: OwnProps) {
         <>
             {
                 props.displayNumber != -1 ?
-                    <Button primary disabled>{props.displayNumber}</Button> :
+                    <Button primary disabled style={{ padding: "11px 14px" }}>{props.displayNumber}</Button> :
                     <Button icon='question' onClick={props.onClick} disabled={disabled} />
             }
         </>
