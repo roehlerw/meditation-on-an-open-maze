@@ -3,7 +3,7 @@ import { Button, Container, Header } from 'semantic-ui-react'
 
 interface OwnProps {
     firstMove: boolean;
-    displayNumber?: number;
+    displayNumber: number;
     rowIndex: number;
     colIndex: number;
     lastMove: LastMove;
@@ -67,7 +67,7 @@ function GameSquare(props: OwnProps) {
         <>
             {
                 props.displayNumber != -1 ?
-                    <Button primary disabled style={matches ? { margin: "0", padding: "11px 14px" } : { margin: "0", padding: "6px 9px" }}>{props.displayNumber}</Button> :
+                    <Button primary disabled style={matches ? { margin: "0", padding: props.displayNumber >= 10 ? "11px" : "11px 14px" } : { margin: "0", padding: props.displayNumber >= 10 ? "6px" : "6px 9px" }}>{props.displayNumber}</Button> :
                     <Button icon='question' onClick={props.onClick} disabled={disabled} style={matches ? { margin: "0" } : { margin: "0rem", padding: "6px" }} />
             }
         </>
