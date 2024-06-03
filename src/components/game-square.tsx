@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Button, Container, Header } from 'semantic-ui-react'
 
 interface OwnProps {
@@ -15,6 +16,16 @@ export interface LastMove {
 }
 
 function GameSquare(props: OwnProps) {
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 900px)").matches
+    )
+
+    useEffect(() => {
+        window
+            .matchMedia("(min-width: 900px)")
+            .addEventListener('change', e => setMatches(e.matches));
+    }, []);
+
     var disabled = true;
     if (props.firstMove) {
         disabled = false;
@@ -56,8 +67,8 @@ function GameSquare(props: OwnProps) {
         <>
             {
                 props.displayNumber != -1 ?
-                    <Button primary disabled style={{ padding: "11px 14px" }}>{props.displayNumber}</Button> :
-                    <Button icon='question' onClick={props.onClick} disabled={disabled} />
+                    <Button primary disabled style={matches ? { margin: "0", padding: "11px 14px" } : { margin: "0", padding: "6px 9px" }}>{props.displayNumber}</Button> :
+                    <Button icon='question' onClick={props.onClick} disabled={disabled} style={matches ? { margin: "0" } : { margin: "0rem", padding: "6px" }} />
             }
         </>
     );

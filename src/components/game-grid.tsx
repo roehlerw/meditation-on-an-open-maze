@@ -29,7 +29,7 @@ function GameGrid(props: OwnProps) {
   return (
     <Grid textAlign='center'>
       {
-        gameState.map((item, index) => <Grid.Row>
+        gameState.map((item, index) => <Grid.Row style={{ flexWrap: 'nowrap' }}>
           <GameRow firstMove={currentNumber == 1} lastMove={lastMove} rowNum={index} rowData={item} onClick={(rowIndex: number, colIndex: number) => {
             var newState = gameState;
             newState[rowIndex][colIndex] = currentNumber;
